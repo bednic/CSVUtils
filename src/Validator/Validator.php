@@ -174,7 +174,7 @@ class Validator
     {
         if ($this->doesFileExistAndReadable($this->filePath)) {
             if (false !== ($handle = fopen($this->filePath, 'r'))) {
-                while (false !== ($row = fgetcsv($handle, 0, $this->delimiter))) {
+                while (false !== ($row = fgetcsv($handle, 0, $this->delimiter, '"','\\'))) {
                     ++$this->currentRowLineNumber;
                     if (empty($this->headers)) {
                         $this->setHeaders($row);
